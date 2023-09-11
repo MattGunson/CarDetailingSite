@@ -1,1 +1,1 @@
-Make conflicts to this line
+Resolve conflicts to this line
