@@ -12,12 +12,13 @@ account creation.
 
 ## Design
 ### Landing Page
-
+[Landing Page](resources/readme/HomePage_mock.jpeg)
 
 ### Pricing
-
+[Pricing Page](resources/readme/PricingPage_mock.jpeg)
 
 ### Schedule a Clean
-
+[Schedule Page](resources/readme/SchedulePage_mock.jpeg)
 
 ### My Account
+[AccountPage](resources/readme/AccountPage_mock.jpeg)
