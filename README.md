@@ -1,5 +1,4 @@
 # CarDetailingSite
-## Description Deliverable
 ### Elevator Pitch
 Small business owners face two significant issues, creating an effective and efficient 
 order/fulfillment tracking process and creating a digital platform that establishes trust with the
@@ -10,3 +9,15 @@ provides detailing services to professionals who commute to the office and leave
 parking lot while they're working. Features will include a live update of the technicians location
 just before and during time of service displayed on a map, as well as scheduling, pricing, and 
 account creation.
+
+## Design
+### Landing Page
+
+
+### Pricing
+
+
+### Schedule a Clean
+
+
+### My Account
