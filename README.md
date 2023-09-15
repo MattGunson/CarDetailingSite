@@ -13,12 +13,56 @@ account creation.
 ## Design
 ### Landing Page
 ![Landing Page](resources/readme/HomePage_mock.jpeg)
+The home page will serve as an informational page for anyone landing on our website.
+Key focuses of this page are to provide trustworthy branding and imaging and to communicate
+our business model and competitive advantages.
 
 ### Pricing
 ![Pricing Page](resources/readme/PricingPage_mock.jpeg)
+This page will communicate the pricing of our services and allow users to leanr about the
+how we structure our payments and services.
 
 ### Schedule a Clean
 ![Schedule Page](resources/readme/SchedulePage_mock.jpeg)
+This page is a dynamic process card that sequentially collects the information necessary to 
+schedule a clean as a customer.
 
 ### My Account
-![AccountPage](resources/readme/AccountPage_mock.jpeg)
+![Account Page](resources/readme/AccountPage_mock.jpeg)
+This page is the account management page and displays to the user the information we have
+collected about them and gives them the ability to change it. It will also display scheduled
+services
+
+### Service Progress
+![Service Progress Page](resources/readme/ServiceProgressPage_mock.jpeg)
+This page displays the progress of a service and the location of the assigned technician 1 hour
+before and during the fulfilling of the service. It also contains the details of the requested
+service. On completion photos of the results will be viewable on this page.
+
+## Technologies
+### Authentication
+I want to implement Google sign-in as well as native sign in. Usernames aren't really necessary
+for this service so a unique identifier like a phone number or email will probably be substituted
+here. The My Account and Service Progress pages will both be blocked by authentication.
+
+### Websocket
+The live location feed for the technician will require a websocket that feeds the web page with 
+the technician's locaiton. I believe this could be provided by a mobile I could also simulate this
+for testing.
+
+### Database
+This app will require many different data models. The apparent necessary models right now as
+I see them are
+* Service
+* User
+* Order
+
+#### Service
+Contains data describing each of the available services.
+
+#### Order
+Contains information about what orders a User has made and what the status of those order is
+
+#### User
+Contains all of the information about a user and any other relevant information related to their
+account.
