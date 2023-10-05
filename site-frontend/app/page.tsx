@@ -14,6 +14,7 @@ export default function Home() {
             height={1000}
           />
         </div>
+        <a href="https://github.com/MattGunson/CarDetailingSite">GitHub.com</a>
         <div> Some overlay things go in here </div>
       </div>
       <div>
