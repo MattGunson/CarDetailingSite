@@ -39,6 +39,17 @@ This page displays the progress of a service and the location of the assigned te
 before and during the fulfilling of the service. It also contains the details of the requested
 service. On completion photos of the results will be viewable on this page.
 
+## HTML Deliverables
+I talked with the professor and he said I could use my java script files for this. I built out the general structure of my application using HTML/tsx.
+
+* HTML pages - I added 5 pages for each of the key pages
+Links - There is a navbar with navigation between pages and a link to the service details page in the profile page
+* Text - I'm not actually sure what I was supposed to put here? I have a client I'm making this site for so I haven't talked to them about what text they want where yet
+* Images - I couldn't figure out how to include an image and so I didn't do this. 😔
+* Login - I'm going to use email/SSO so I'm going to tackle that when we get to the more complicated js stuff
+* Database - The database section will explain what data storage and what I'm using it for
+* WebSocket - The location of the tech fulfilling the service will be live updated in the service progress page.
+
 ## Technologies
 ### Authentication
 I want to implement Google sign-in as well as native sign in. Usernames aren't really necessary

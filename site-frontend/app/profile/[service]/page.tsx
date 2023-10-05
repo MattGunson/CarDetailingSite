@@ -4,7 +4,10 @@ export default function ServiceDetails() {
       <div>
         progress container
         <div>service details</div>
-        <div>Service provider tracker</div>
+        <div>
+          Service provider tracker
+          {/* this is where we will use a web socket for live locatin data */}
+        </div>
       </div>
     </main>
   );

@@ -3,7 +3,7 @@ export default function Products() {
     <main className="flex min-h-screen flex-col items-center justify-center">
       <div>Box for Customer favorites</div>
       <div>
-        collection of options
+        collection of product options
         <div>Option 1</div>
         <div>Option 2</div>
         <div>Option 3</div>
