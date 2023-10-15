@@ -77,3 +77,7 @@ Contains information about what orders a User has made and what the status of th
 #### User
 Contains all of the information about a user and any other relevant information related to their
 account.
+
+## simon-css
+I changed the css so that the background color for the image on the about page is a gray with a gradient value of 239.
+I also changed the cutover point in the media tag to allow the window to get smaller before getting rid of the footer and header.
