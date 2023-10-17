@@ -11,7 +11,7 @@ export default function Footer() {
         <header className="footer-title">Company</header>
         <a className="link link-hover">About us</a>
         <a className="link link-hover">Contact</a>
-        <a className="link link-hover">Jobs</a>
+        <a href="https://github.com/MattGunson/CarDetailingSite" className="link link-hover">GitHub</a>
       </nav>
       <nav>
         <header className="footer-title">Social</header>
