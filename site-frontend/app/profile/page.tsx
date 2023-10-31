@@ -3,19 +3,19 @@ import { getServerSession } from "next-auth/next";
 import Link from "next/link";
 import { redirect } from "next/navigation";
 
-interface card {
-  description: string;
-  content: kvPair[];
+interface carResponse {
+  err: string | null;
+  cars: car[]
 }
 
-interface kvPair {
-  key: string;
-  val: string;
+interface car {
+  name: string,
+  make: string,
+  model: string,
+  class: string,
+  year: number,
+  color: string,
 }
-
-let cards: card[] = [
-  { description: "My Cars", content: [] },
-];
 
 export default async function Profile() {
   const session = await getServerSession(options)
@@ -24,9 +24,27 @@ export default async function Profile() {
     redirect("/api/auth/signin?callbackUrl=/server");
   }
 
-  let user = session.user
-  let cars = null // TODO: add query for cars
-  let services = null // TODO: add query for services
+  const user = session.user
+  const carRes = await fetch('https://jsonplaceholder.typicode.com/posts', {
+    method: 'POST',
+    body: JSON.stringify({
+      err: null,
+      cars: [
+        {
+          name: "Audrey's Car",
+          make: "toyota",
+          model: "rav4",
+          class: "crossover suv",
+          year: 2023,
+          color: "blue",
+        }
+      ],
+    }),
+    headers: {
+      'Content-type': 'application/json; charset=UTF-8',
+    },
+  }); // TODO: add query for cars
+  const carData: carResponse = await carRes.json();
 
   return (
     <main className="flex min-h-screen flex-col items-center justify-center">
@@ -39,18 +57,24 @@ export default async function Profile() {
             <div className="ml-4">{"image: " + user.image}</div>
           </> : <></>}
         </div>
-
-        {cards.map((card) => (
-          <div key={card.description} className="m-4 bg-slate-200 h-[25vh] w-[50vh]">
-            {card.description}
-            {card.content.map((content) => (
-              <div key={content.key} className="ml-4">
-                {content.key + ": " + content.val}
-              </div>
-            ))
-            }
+        {carData.err ?
+          <div className="m-4 bg-red-300 h-[25vh] w-[50vh]">
+            <h1 className="text-red-800">ERROR: {carData.err}</h1>
           </div>
-        ))}
+          :
+          <div className="m-4 bg-slate-200 h-[25vh] w-[50vh]">
+            {carData.cars.map((car) => (
+              <div key={car.name}>
+                {car.name}
+                <div className="ml-4">{"make: " + car.make}</div>
+                <div className="ml-4">{"model: " + car.model}</div>
+                <div className="ml-4">{"class: " + car.class}</div>
+                <div className="ml-4">{"year: " + car.year}</div>
+                <div className="ml-4">{"color: " + car.color}</div>
+              </div>
+            ))}
+          </div>
+        }
         <div className="m-4 bg-slate-300 h-[25vh] w-[50vh]">
           <h1>Upcoming services</h1>
           <Link
