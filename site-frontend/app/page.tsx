@@ -23,8 +23,8 @@ export default function Home() {
           </div>
         </div>
       </div>
-      <div className="flex flex-col justify-center text-center h-[66vh] sm:flex-row sm:h-[33vh]">
-        <div className="bg-slate-300 flex-1 relative h-[33vh] mx-2">
+      <div className="flex flex-col justify-center text-center h-[66vh] sm:flex-row sm:h-[33vh] my-2">
+        <div className="bg-slate-300 flex-1 relative h-[33vh] mx-2 mb-2">
           <Image
             className="z-0"
             src="/carInterior.jpg"
@@ -38,7 +38,7 @@ export default function Home() {
             <h1>pop out window for details</h1>
           </div>
         </div>
-        <div className="bg-slate-500 flex-1 relative h-[33vh] mx-2">
+        <div className="bg-slate-500 flex-1 relative h-[33vh] mx-2 mb-2">
           <Image
             className="z-0"
             src="/carExteriorPorsche.jpg"

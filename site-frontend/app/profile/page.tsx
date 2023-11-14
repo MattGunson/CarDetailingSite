@@ -2,20 +2,8 @@ import { options } from "../api/auth/[...nextauth]/options";
 import { getServerSession } from "next-auth/next";
 import Link from "next/link";
 import { redirect } from "next/navigation";
-
-interface carResponse {
-  err: string | null;
-  cars: car[]
-}
-
-interface car {
-  name: string,
-  make: string,
-  model: string,
-  class: string,
-  year: number,
-  color: string,
-}
+import getUserData from "../libs/getUserData";
+import { carResponse } from "../libs/getUserData";
 
 export default async function Profile() {
   const session = await getServerSession(options)
@@ -25,26 +13,8 @@ export default async function Profile() {
   }
 
   const user = session.user
-  const carRes = await fetch('https://jsonplaceholder.typicode.com/posts', {
-    method: 'POST',
-    body: JSON.stringify({
-      err: null,
-      cars: [
-        {
-          name: "Audrey's Car",
-          make: "toyota",
-          model: "rav4",
-          class: "crossover suv",
-          year: 2023,
-          color: "blue",
-        }
-      ],
-    }),
-    headers: {
-      'Content-type': 'application/json; charset=UTF-8',
-    },
-  }); // TODO: add query for cars
-  const carData: carResponse = await carRes.json();
+  const carData: carResponse = await getUserData("audrey");
+  
 
   return (
     <main className="flex min-h-screen flex-col items-center justify-center">
