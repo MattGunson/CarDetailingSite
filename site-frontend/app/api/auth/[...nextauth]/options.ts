@@ -3,6 +3,7 @@ import CredentialsProvider from "next-auth/providers/credentials";
 import GoogleProvider from "next-auth/providers/google";
 import GitHubProvider from "next-auth/providers/github";
 import mongoClientPromise from "@/lib/mongodb";
+import getUser from "@/lib/getUser";
 
 export const options: NextAuthOptions = {
   providers: [
@@ -27,32 +28,11 @@ export const options: NextAuthOptions = {
           return null;
         }
 
-        try {
-          const client = await mongoClientPromise
-          const db = client.db("cs260");
+        const user = await getUser(credentials.username);
 
-          const users = await db
-            .collection("users")
-            .find({username: credentials.username})
-            .toArray();
-
-          if (users.length === 0) {
-            console.log("username not found");
-            return null;
-          }
-
-          const user = users[0];
-          if (credentials.password === user?.password) {
-            const res = {id: "" + user._id, email: "" + user.username, password: "" + user.password, name: "" + user.name};
-            console.log(res);
-            return res;
-          }
-          
-        } catch (e) {
-          console.error(e);
-          return null;
+        if (credentials.password === user?.password) {
+          return user;
         }
-
         return null;
       }
     }),
