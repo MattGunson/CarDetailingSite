@@ -2,8 +2,8 @@ import { options } from "../api/auth/[...nextauth]/options";
 import { getServerSession } from "next-auth/next";
 import Link from "next/link";
 import { redirect } from "next/navigation";
-import getUserData from "../libs/getUserData";
-import { carResponse } from "../libs/getUserData";
+import getUserData from "../../lib/getUserData";
+import { carResponse } from "../../lib/getUserData";
 
 export default async function Profile() {
   const session = await getServerSession(options)

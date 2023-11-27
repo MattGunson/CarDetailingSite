@@ -1,6 +1,8 @@
 import type { NextAuthOptions } from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
 import GoogleProvider from "next-auth/providers/google";
+import GitHubProvider from "next-auth/providers/github";
+import mongoClientPromise from "@/lib/mongodb";
 
 export const options: NextAuthOptions = {
   providers: [
@@ -19,19 +21,48 @@ export const options: NextAuthOptions = {
         }
       },
       async authorize(credentials) {
+        console.log(credentials)
         // This is where I retrieve user data to verify credentials
-        const user = { id: "01", email: "matt@gmail.com", password: "nextauth" }
-
-        if (credentials?.username === user.email && credentials?.password === user.password) {
-          return user
-        } else {
-          return null
+        if (credentials?.username === undefined || credentials?.password === undefined) {
+          return null;
         }
+
+        try {
+          const client = await mongoClientPromise
+          const db = client.db("cs260");
+
+          const users = await db
+            .collection("users")
+            .find({username: credentials.username})
+            .toArray();
+
+          if (users.length === 0) {
+            console.log("username not found");
+            return null;
+          }
+
+          const user = users[0];
+          if (credentials.password === user?.password) {
+            const res = {id: "" + user._id, email: "" + user.username, password: "" + user.password, name: "" + user.name};
+            console.log(res);
+            return res;
+          }
+          
+        } catch (e) {
+          console.error(e);
+          return null;
+        }
+
+        return null;
       }
     }),
-    GoogleProvider({
-      clientId: process.env.GOOGLE_CLIENT_ID as string,
-      clientSecret: process.env.GOOGLE_CLIENT_SECRET as string
-    })
+    GitHubProvider({
+      clientId: process.env.GITHUB_CLIENT_ID as string,
+      clientSecret: process.env.GITHUB_CLIENT_SECRET as string,
+    }),
+    // GoogleProvider({
+    //   clientId: process.env.GOOGLE_CLIENT_ID as string,
+    //   clientSecret: process.env.GOOGLE_CLIENT_SECRET as string
+    // })
   ],
 }
