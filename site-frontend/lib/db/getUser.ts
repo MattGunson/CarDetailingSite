@@ -14,7 +14,7 @@ export default async function getUser(username: string) {
   
     const users = await db
       .collection("users")
-      .find({username: username})
+      .find({ email: username})
       .toArray();
   
     if (users.length === 0) {
@@ -22,7 +22,12 @@ export default async function getUser(username: string) {
     }
   
     const user = users[0];
-    const res: user = {id: "" + user._id, email: "" + user.username, password: "" + user.password, name: "" + user.name};
+    const res: user = {
+      id: "" + user._id,
+      email: user.email as string,
+      password: user.password as string,
+      name: user.name as string
+    };
     console.log(res);
     return res;
   } catch (e) {

@@ -1,9 +1,9 @@
-import mongoClientPromise from "@/lib/mongodb";
+import mongoClientPromise from "@/lib/db/mongodb";
 
 export async function POST(request: Request) {
   const data = await request.json();
   console.log(data);
-  if (data?.username === undefined || data?.password === undefined || data?.name === undefined) {
+  if (data?.email === undefined || data?.password === undefined || data?.name === undefined) {
     return Response.json({message: "invalid registration"}, { status: 401 });
   }
 
@@ -13,12 +13,12 @@ export async function POST(request: Request) {
 
     const users = await db
       .collection("users")
-      .find({ username: data.username })
+      .find({ email: data.username })
       .toArray();
 
     if (users.length === 0) {
       const insertRes = await db.collection("users").insertOne({
-        username: data.username,
+        email: data.email,
         password: data.password,
         name: data.name
       });

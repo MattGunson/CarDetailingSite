@@ -2,8 +2,8 @@ import type { NextAuthOptions } from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
 import GoogleProvider from "next-auth/providers/google";
 import GitHubProvider from "next-auth/providers/github";
-import mongoClientPromise from "@/lib/mongodb";
-import getUser from "@/lib/getUser";
+import mongoClientPromise from "@/lib/db/mongodb";
+import getUser from "@/lib/db/getUser";
 
 export const options: NextAuthOptions = {
   providers: [
