@@ -4,6 +4,7 @@ export async function POST(request: Request) {
   const data = await request.json();
   console.log(data);
   if (data?.email === undefined || data?.password === undefined || data?.name === undefined) {
+    console.log("invalid registration")
     return Response.json({message: "invalid registration"}, { status: 401 });
   }
 

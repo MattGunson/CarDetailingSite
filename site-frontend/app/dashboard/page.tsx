@@ -49,7 +49,7 @@ export default async function Profile() {
           <h1>Upcoming services</h1>
           <Link
             className="btn btn-ghost normal-case text-xl"
-            href="/profile/service"
+            href="/dashboard/service"
           >
             service details
           </Link>

@@ -6,13 +6,16 @@ import mongoClientPromise from "@/lib/db/mongodb";
 import getUser from "@/lib/db/getUser";
 
 export const options: NextAuthOptions = {
+  session: {
+    strategy: 'jwt',
+  },
   providers: [
     CredentialsProvider({
       name: "Credentials",
       credentials: {
-        username: {
+        email: {
           label: "Email:",
-          type: "text",
+          type: "email",
           placeholder: "matt@gmail.com",
         },
         password: {
@@ -22,17 +25,19 @@ export const options: NextAuthOptions = {
         }
       },
       async authorize(credentials) {
+        console.log("verifying credentials")
         console.log(credentials)
         // This is where I retrieve user data to verify credentials
-        if (credentials?.username === undefined || credentials?.password === undefined) {
+        if (credentials?.email === undefined || credentials?.password === undefined) {
           return null;
         }
 
-        const user = await getUser(credentials.username);
+        const user = await getUser(credentials.email);
 
         if (credentials.password === user?.password) {
           return user;
         }
+        console.log("bad password of %s", credentials.password)
         return null;
       }
     }),

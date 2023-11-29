@@ -5,7 +5,7 @@ export default function Home() {
   return (
     <main>
       <div className="min-h-[66vh]">
-        <div className="relative h-[66vh] mb-1" >
+        <div className="bg-slate-100 relative h-[66vh] mb-1" >
           <Image
             className="z-0"
             src="/porscheHandWash.jpg"
