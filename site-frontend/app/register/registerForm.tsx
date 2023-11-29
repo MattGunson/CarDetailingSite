@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import { FormEvent } from "react";
 
 export default async function RegisterForm() {
+  const router = useRouter();
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const formData = new FormData(e.currentTarget);
@@ -17,7 +18,6 @@ export default async function RegisterForm() {
       }),
     })
 
-    const router = useRouter();
     const response = await signIn<'credentials'>('credentials', {
       email: formData.get('email'),
       password: formData.get('password'),
