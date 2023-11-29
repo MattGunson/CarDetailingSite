@@ -1,10 +1,11 @@
-'use client'
-import { getServerSession } from "next-auth";
+'use client';
+import { getServerSession } from "next-auth/next";
 import { signOut } from "next-auth/react";
 import Link from "next/link"
+import { options } from "../api/auth/[...nextauth]/options";
 
 export default async function AccountButton() {
-  // const session = await getServerSession();
+  const session = await getServerSession(options);
   return (
     <>
       <li>
@@ -18,6 +19,7 @@ export default async function AccountButton() {
       <li>
         <Link className="text-primary-content" href="/dashboard">Login</Link>
       </li>
+
     </>
   );
 }
