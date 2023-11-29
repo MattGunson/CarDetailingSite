@@ -1,5 +1,12 @@
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
+## Startup Login
+
+Supports new user registration: register page takes user info and stores it inside of MongoDB, OAuth for a github account also supports arbitrary users
+Supports existing user authentication: Credentials authenticator authenticates an email and password native to this application. OAuth also supports other users.
+Stores and retrieves credentials in MongoDB: yes, see app/register/page.tsx and app/api/auth/[...nextauth]/route.ts, both use functions from lib/db
+Restricts application functionality based on authentication: yes, nextauth middleware redirects any restricted page to a user login
+
 ## Startup Service
 
 I had a conversation with the professor at the beginning of the semester that I would be using Next.js. He said that it would be fine. By using Next
