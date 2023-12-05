@@ -27,7 +27,6 @@ export default async function Register() {
   return (
     <>
       <RegisterForm />
-      <LoginForm />
     </>
   );
 }
