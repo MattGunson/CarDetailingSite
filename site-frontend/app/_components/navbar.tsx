@@ -13,6 +13,7 @@ export default async function Navbar() {
     { name: "Profile", link: "/dashboard" },
     { name: "Products", link: "/products" },
     { name: "Schedule", link: "/schedule" },
+    { name: "Draw", link: "/draw" },
   ];
 
   const session = await getServerSession(options)
