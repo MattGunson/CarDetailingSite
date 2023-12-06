@@ -41,12 +41,15 @@ export default function RegisterForm() {
   return (
     <form
       onSubmit={handleSubmit}
-      className="flex flex-col gap-2 mx-auto max-w-md mt-10"
+      className="flex flex-col gap-3 mx-auto max-w-md my-10"
     >
-      <input name="name" className="border border-black" type="text" />
-      <input name="email" className="border border-black" type="email" />
-      <input name="password" className="border border-black" type="password" />
-      <button type="submit">Register</button>
+      <label htmlFor="name">Name:</label>
+      <input name="name" placeholder="matthew" className="border border-primary rounded-md" type="text" />
+      <label htmlFor="email">Email:</label>
+      <input name="email" placeholder="matt@gmail.com" className="border border-primary rounded-md" type="email" />
+      <label htmlFor="password">Password:</label>
+      <input name="password" placeholder="password" className="border border-primary rounded-md" type="password" />
+      <button type="submit" className="btn btn-primary">Register</button>
 
     </form>
   );
