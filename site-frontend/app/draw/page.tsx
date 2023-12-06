@@ -11,7 +11,12 @@ if (pathEnv === undefined) {
   pathEnv = "http://localhost:3001"
 }
 const SOCKET_URL = pathEnv
-const socket = io(SOCKET_URL)
+const socket = io(SOCKET_URL, {
+  extraHeaders: {
+    Connection: "Upgrade",
+    Upgrade: "websocket"
+  }
+})
 
 interface pageProps { }
 
