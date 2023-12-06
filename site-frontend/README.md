@@ -1,5 +1,13 @@
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
+## Startup Websocket
+
+* Backend listens for WebSocket connection: Custom process run via pm2 in ec2 to support web socket creation. Whenever a new connection is established the server queries active clients for the current state of the draw window, then passes it back to the client. It also distributes data from all current clients to all other clients.
+* Frontend makes WebSocket connection: The draw page establishes a WSS socket connection with the socket service I setup on my ec2 instance. Anytime I draw it sends a message to the server about the line I drew so that the server can notify other clients about the new line. 
+* Data sent over WebSocket connection: All line data is sent over socket connections.
+* WebSocket data displayed in the application interface: All lines are displayed and drawn on the canvas of the UI. 
+
+
 ## Startup Login
 
 Supports new user registration: register page takes user info and stores it inside of MongoDB, OAuth for a github account also supports arbitrary users
