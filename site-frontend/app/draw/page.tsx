@@ -8,9 +8,10 @@ import { io } from 'socket.io-client'
 
 let pathEnv = process.env.SOCKET_SERVER
 if (pathEnv === undefined) {
-  pathEnv = "http://localhost:3001"
+  pathEnv = "wss://socket.mgunsonsoftware.com"
 }
 const SOCKET_URL = pathEnv
+console.log(SOCKET_URL)
 const socket = io(SOCKET_URL, {
   extraHeaders: {
     Connection: "Upgrade",
